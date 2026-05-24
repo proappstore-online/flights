@@ -9,7 +9,7 @@ npm i -g @proappstore/cli
 pas init my-app
 ```
 
-The CLI clones this template, replaces every `APPNAME` placeholder with your app id, runs `git init`, and makes the first commit — the result is a runnable app you can `pnpm dev` immediately.
+The CLI clones this template, replaces every `flights` placeholder with your app id, runs `git init`, and makes the first commit — the result is a runnable app you can `pnpm dev` immediately.
 
 ## What's in here
 
@@ -28,7 +28,7 @@ If you really want to scaffold by hand:
 cp -r ~/dev/stores/pas/templates/template-standalone my-app
 cd my-app
 find . -type f \( -name "*.json" -o -name "*.tsx" -o -name "*.ts" -o -name "*.html" -o -name "*.md" -o -name "*.yaml" \) \
-  -not -path "*/node_modules/*" -exec sed -i '' "s/APPNAME/my-app/g" {} \;
+  -not -path "*/node_modules/*" -exec sed -i '' "s/flights/my-app/g" {} \;
 rm -rf .git && git init
 pnpm install && pnpm dev
 ```

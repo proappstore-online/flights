@@ -1,8 +1,8 @@
-# APPNAME (Pro)
+# flights (Pro)
 
 A Pro app on ProAppStore.
 
-- Subdomain: `APPNAME.proappstore.online`
+- Subdomain: `flights.proappstore.online`
 - Dev: `pnpm install && pnpm dev`
 - Build: `pnpm build` (runs platform compliance check via prebuild)
 - Deploy: `git push origin main` (auto-deploys via Cloudflare Pages)

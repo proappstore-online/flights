@@ -34,9 +34,9 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: 'APPNAME — ProAppStore',
-        short_name: 'APPNAME',
-        description: 'APPNAME on ProAppStore',
+        name: 'flights — ProAppStore',
+        short_name: 'flights',
+        description: 'flights on ProAppStore',
         start_url: '/',
         scope: '/',
         display: 'standalone',
