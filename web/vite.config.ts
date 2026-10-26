@@ -11,6 +11,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,ico,woff2,wasm,json}'],
+        // PAS reserved routes (auth callbacks, platform mediation) must reach the network.
+        navigateFallbackDenylist: [/^\/\.pas\//],
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
         runtimeCaching: [
           {

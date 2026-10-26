@@ -253,6 +253,7 @@ export default function App() {
             {permission !== 'denied' && (
               <button
                 onClick={isSubscribed ? unsubscribe : subscribe}
+                aria-label={isSubscribed ? 'Disable notifications' : 'Enable notifications'}
                 className="rounded-full border border-[var(--line-strong)] px-2 py-1 text-xs text-[var(--muted)] hover:text-[var(--ink)]"
                 title={isSubscribed ? 'Disable notifications' : 'Enable notifications'}
               >
@@ -263,6 +264,7 @@ export default function App() {
               onClick={() => setPreference(theme === 'dark' ? 'light' : 'dark')}
               className="rounded-full border border-[var(--line-strong)] px-2 py-1 text-xs text-[var(--muted)] hover:text-[var(--ink)]"
               title="Toggle theme"
+              aria-label="Toggle theme"
             >
               {theme === 'dark' ? 'Light' : 'Dark'}
             </button>
@@ -284,6 +286,7 @@ export default function App() {
             <button
               key={t}
               onClick={() => { setTab(t); if (t === 'trips') loadTrips() }}
+              aria-label={t}
               className={`px-4 py-2.5 text-sm font-medium capitalize transition-colors ${
                 tab === t
                   ? 'border-b-2 border-[var(--accent)] text-[var(--ink)]'
@@ -306,6 +309,7 @@ export default function App() {
             <div className="flex gap-2">
               <input
                 type="text"
+                aria-label="Ask the AI travel assistant"
                 value={aiQuery}
                 onChange={e => setAiQuery(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && askAI()}
@@ -315,6 +319,7 @@ export default function App() {
               <button
                 onClick={askAI}
                 disabled={aiLoading}
+                aria-label="Ask"
                 className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
               >
                 {aiLoading ? '...' : 'Ask'}
@@ -333,8 +338,9 @@ export default function App() {
               <div className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-4 space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-[var(--muted)] mb-1">From</label>
+                    <label htmlFor="origin" className="block text-xs font-medium text-[var(--muted)] mb-1">From</label>
                     <input
+                      id="origin"
                       type="text"
                       value={origin}
                       onChange={e => setOrigin(e.target.value)}
@@ -343,8 +349,9 @@ export default function App() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-[var(--muted)] mb-1">To</label>
+                    <label htmlFor="destination" className="block text-xs font-medium text-[var(--muted)] mb-1">To</label>
                     <input
+                      id="destination"
                       type="text"
                       value={destination}
                       onChange={e => setDestination(e.target.value)}
@@ -355,8 +362,9 @@ export default function App() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-[var(--muted)] mb-1">Depart</label>
+                    <label htmlFor="depart-date" className="block text-xs font-medium text-[var(--muted)] mb-1">Depart</label>
                     <input
+                      id="depart-date"
                       type="date"
                       value={departDate}
                       onChange={e => setDepartDate(e.target.value)}
@@ -364,8 +372,9 @@ export default function App() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-[var(--muted)] mb-1">Return</label>
+                    <label htmlFor="return-date" className="block text-xs font-medium text-[var(--muted)] mb-1">Return</label>
                     <input
+                      id="return-date"
                       type="date"
                       value={returnDate}
                       onChange={e => setReturnDate(e.target.value)}
@@ -373,8 +382,9 @@ export default function App() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-[var(--muted)] mb-1">Travelers</label>
+                    <label htmlFor="travelers" className="block text-xs font-medium text-[var(--muted)] mb-1">Travelers</label>
                     <input
+                      id="travelers"
                       type="number"
                       min={1}
                       max={9}
@@ -386,6 +396,7 @@ export default function App() {
                 </div>
                 <button
                   onClick={searchFlights}
+                  aria-label="Search flights"
                   disabled={searchingFlights || !origin || !destination || !departDate}
                   className="w-full rounded-xl bg-[var(--ink)] py-3 text-sm font-semibold text-[var(--paper)] hover:opacity-90 disabled:opacity-40"
                 >
@@ -430,8 +441,9 @@ export default function App() {
               <div className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-4 space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-medium text-[var(--muted)] mb-1">Destination</label>
+                    <label htmlFor="hotel-city" className="block text-xs font-medium text-[var(--muted)] mb-1">Destination</label>
                     <input
+                      id="hotel-city"
                       type="text"
                       value={hotelCity}
                       onChange={e => setHotelCity(e.target.value)}
@@ -442,8 +454,9 @@ export default function App() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-[var(--muted)] mb-1">Check-in</label>
+                    <label htmlFor="checkin" className="block text-xs font-medium text-[var(--muted)] mb-1">Check-in</label>
                     <input
+                      id="checkin"
                       type="date"
                       value={checkin}
                       onChange={e => setCheckin(e.target.value)}
@@ -451,8 +464,9 @@ export default function App() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-[var(--muted)] mb-1">Check-out</label>
+                    <label htmlFor="checkout" className="block text-xs font-medium text-[var(--muted)] mb-1">Check-out</label>
                     <input
+                      id="checkout"
                       type="date"
                       value={checkout}
                       onChange={e => setCheckout(e.target.value)}
@@ -460,8 +474,9 @@ export default function App() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-[var(--muted)] mb-1">Guests</label>
+                    <label htmlFor="guests" className="block text-xs font-medium text-[var(--muted)] mb-1">Guests</label>
                     <input
+                      id="guests"
                       type="number"
                       min={1}
                       max={9}
@@ -473,6 +488,7 @@ export default function App() {
                 </div>
                 <button
                   onClick={() => { searchHotels(); if (hotelCity) showMap(hotelCity) }}
+                  aria-label="Search hotels"
                   disabled={searchingHotels || !hotelCity || !checkin}
                   className="w-full rounded-xl bg-[var(--ink)] py-3 text-sm font-semibold text-[var(--paper)] hover:opacity-90 disabled:opacity-40"
                 >

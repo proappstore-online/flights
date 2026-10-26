@@ -1,0 +1,12 @@
+{
+  "name": "flights-e2e",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Playwright behavioural tests for flights (run in CI against the live deploy).",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.57.0"
+  }
+}
